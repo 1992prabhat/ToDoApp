@@ -1,5 +1,5 @@
 import { ADD_TODO } from '../actions';
-import { DELETE_TODO } from '../actions';
+import { RENDER_TODO_LIST, USER_PROFILE_LOADED } from '../actions';
 
 const initialState = {
   toDoList: []
@@ -13,22 +13,22 @@ export default function toDoApp(state = initialState, action) {
     }
   ];
   switch (action.type) {
+    case RENDER_TODO_LIST:
+      return {
+        ...state,
+        toDoList: action.toDoList
+      };
+
     case ADD_TODO:
       return {
         ...state,
         toDoList: newToDoList
       };
 
-    case DELETE_TODO:
-      let toDoList = state.toDoList;
-      let id = action.id;
-      console.log('Action', action, toDoList);
-      //this.state.toDoList.remove(todo => todo._id === id);
-      //console.log('Action After', action, toDoList);
-      //this.setState({ tasks: this.state.toDoList });
+    case USER_PROFILE_LOADED:
       return {
-        //state,
-        toDoList: newToDoList
+        ...state,
+        user: action.user
       };
 
     default:

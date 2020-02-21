@@ -7,23 +7,20 @@ import ToDo from './ToDo';
 const ToDoList = ({ toDoList }) => (
   <Jumbotron>
     <ListGroup>
-      {toDoList.map(
-        (toDo, index) => (
-          console.log(toDo),
-          (<ToDo key={index} title={toDo.title} id={toDo._id} />)
-        )
-      )}
+      {toDoList.map((toDo, index) => (
+        <ToDo key={index} {...toDo} />
+      ))}
     </ListGroup>
   </Jumbotron>
 );
 
-ToDoList.propTypes = {
-  toDoList: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired
-};
+// ToDoList.propTypes = {
+//   toDoList: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       _id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired
+//     }).isRequired
+//   ).isRequired
+// };
 
 export default ToDoList;

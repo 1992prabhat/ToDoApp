@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import AddToDO from './containers/AddToDo';
+import AddToDo from './containers/AddToDo';
 import ToDoListContainer from './containers/ToDoListContainer';
+import { Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Callback from './containers/Callback';
+import NavigationContainer from './containers/NavigationContainer';
 
 import './App.css';
 
@@ -14,8 +18,10 @@ class App extends Component {
         <Row className="row">
           <Col xs={12}>
             <h1>To Do List</h1>
-            <AddToDO />
-            <ToDoListContainer />
+            <NavigationContainer />
+            <Route exact path="/" component={ToDoListContainer} />
+            <Route exact path="/new-item" component={AddToDo} />
+            <Route exact path="/callback" component={Callback} />
           </Col>
         </Row>
       </Container>
